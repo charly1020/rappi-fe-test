@@ -1,6 +1,5 @@
 import { createActions } from 'redux-actions';
 import { getProducts } from '../services/apiService';
-// import products from "../mock-data/products.json";
 
 const {
   getProductsSuccess

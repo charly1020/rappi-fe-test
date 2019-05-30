@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import {
-  ListItem,
   Typography,
   Button,
   Card,
@@ -9,10 +8,11 @@ import {
   CardActions,
   Grid
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { increaseItemCant, removeItem, buy } from "../actions/cartActions";
-import CartMenu from "./components/cart-menu/CartMenu";
+import CartMenu from "./cart-menu/CartMenu";
 
-const Cart = ({ cart, increaseItemCant, removeItem, buy }) => {
+export const Cart = ({ cart, increaseItemCant, removeItem, buy }) => {
   const addMore = itemId => {
     increaseItemCant(itemId);
   };
@@ -24,41 +24,52 @@ const Cart = ({ cart, increaseItemCant, removeItem, buy }) => {
   const buyItems = () => {
     buy();
   };
-
   return (
-    <Grid container style={{ marginTop: 70 }}>
-      <CartMenu buy={buyItems} />
-      {cart.map(itemCart => {
-        return (
-          <Grid item key={itemCart.item.id} xs={6} md={2}>
-            <ListItem key={itemCart.item.id}>
+    <Fragment>
+      <CartMenu buy={buyItems} total={cart.length} />
+      <Grid
+        id="cartItemsContainer"
+        container
+        style={{ marginTop: 70 }}
+        spacing={4}
+      >
+        {cart.map(itemCart => {
+          return (
+            <Grid item key={itemCart.item.id} xs={6} md={2}>
               <Card>
                 <CardContent>
-                  <Typography>Name: {itemCart.item.name}</Typography>
-                  <Typography>Quantity: {itemCart.cant}</Typography>
-                  <Typography>Price: {itemCart.item.price}</Typography>
+                  <Typography>Nombre: {itemCart.item.name}</Typography>
+                  <Typography>Cantidad: {itemCart.cant}</Typography>
+                  <Typography>Precio: {itemCart.item.price}</Typography>
                 </CardContent>
                 <CardActions>
                   <Button
                     color="primary"
                     onClick={() => addMore(itemCart.item.id)}
                   >
-                    Add More
+                    Agregar
                   </Button>
                   <Button
                     color="secondary"
                     onClick={() => remove(itemCart.item.id)}
                   >
-                    Remove
+                    Eliminar
                   </Button>
                 </CardActions>
               </Card>
-            </ListItem>
-          </Grid>
-        );
-      })}
-    </Grid>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </Fragment>
   );
+};
+
+Cart.propTypes = {
+  cart: PropTypes.array.isRequired,
+  increaseItemCant: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  buy: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ cart }) => {

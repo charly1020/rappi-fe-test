@@ -2,7 +2,7 @@ import { handleActions } from "redux-actions";
 import { pushFilterSuccess } from "../actions/filterActions";
 
 const defaultState = {
-  data: { available: "all", quantity: "", priceFrom: "", priceTo: "" },
+  data: { available: "all", quantity: "", priceFrom: "", priceTo: "", itemName: "" },
   errors: null
 };
 

@@ -52,7 +52,7 @@ const reducer = handleActions(
         const pos = cart.map(item => item.item.id).indexOf(itemId);
         cart.splice(pos, 1);
       }
-      
+
       updateCartInLocalStorage(cart);
       return {
         cart: [...cart]
@@ -62,8 +62,8 @@ const reducer = handleActions(
       cart = [];
       updateCartInLocalStorage(cart);
       return {
-        cart
-      }
+        cart: [...cart]
+      };
     }
   },
   defaultState

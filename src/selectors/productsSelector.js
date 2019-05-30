@@ -15,7 +15,8 @@ export const getFilteredProducts = createSelector(
          (filter.available === "all" || available === product.available) &&
          (!filter.priceFrom || filter.priceFrom <= product.priceVal) &&
          (!filter.priceTo || filter.priceTo >= product.priceVal) &&
-         (!filter.quantity || +filter.quantity === product.quantity)
+         (!filter.quantity || +filter.quantity === product.quantity) &&
+         (!filter.itemName || product.name.includes(filter.itemName.toLowerCase()))
          )
       );
     });

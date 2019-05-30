@@ -9,11 +9,12 @@ import {
   Button
 } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Add } from '@material-ui/icons';
+import PropTypes from "prop-types";
+import { Add } from "@material-ui/icons";
 import { addItemToCart } from "../../../actions/cartActions";
 import { getFilteredProducts } from "../../../selectors/productsSelector";
 
-const Products = ({ item, products, addItemToCart }) => {
+export const Products = ({ item, products, addItemToCart }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root} spacing={2}>
@@ -24,15 +25,18 @@ const Products = ({ item, products, addItemToCart }) => {
               <Grid item key={product.id} md={2} xs={6}>
                 <Card>
                   <CardContent>
-                    <Typography>Name: {product.name}</Typography>
-                    <Typography>Quantity: {product.quantity}</Typography>
+                    <Typography>Nombre: {product.name}</Typography>
+                    <Typography>Cantidad: {product.quantity}</Typography>
                     <Typography>
-                      Available: {String(product.available)}
+                      Disponible: {String(product.available)}
                     </Typography>
-                    <Typography>Price: {product.price}</Typography>
+                    <Typography>Precio: {product.price}</Typography>
                   </CardContent>
                   <CardActions className={classes.actions}>
-                    <Button onClick={() => addItemToCart(product)} className={classes.button}>
+                    <Button
+                      onClick={() => addItemToCart(product)}
+                      className={classes.button}
+                    >
                       <Add />
                     </Button>
                   </CardActions>
@@ -43,7 +47,13 @@ const Products = ({ item, products, addItemToCart }) => {
         })}
     </Grid>
   );
-}
+};
+
+Products.propTypes = {
+  categories: PropTypes.object,
+  products: PropTypes.array.isRequired,
+  addItemToCart: PropTypes.func.isRequired
+};
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -51,10 +61,10 @@ const useStyles = makeStyles(theme =>
       marginTop: 40
     },
     button: {
-      backgroundColor: '#9ebac1'
+      backgroundColor: "#9ebac1"
     },
     actions: {
-      justifyContent: 'center'
+      justifyContent: "center"
     }
   })
 );

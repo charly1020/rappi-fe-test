@@ -12,6 +12,7 @@ import {
   Card,
   CardContent
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { pushFilter } from "../../../actions/filterActions";
 
 const Filter = props => {
@@ -26,28 +27,28 @@ const Filter = props => {
   };
 
   const {
-    filter: { available, priceFrom, priceTo, quantity }
+    filter: { available, priceFrom, priceTo, quantity, itemName },
+    item
   } = props;
-
   return (
     <Grid item>
       <Card>
         <CardContent>
           <FormControl component="fieldset">
-            <FormLabel>Availability</FormLabel>
+            <FormLabel>Disponibilidad</FormLabel>
             <RadioGroup
-              value={available || "all"}
-              onChange={(e) => handleChangeAvailability(e)}
+              value={available || "todos"}
+              onChange={e => handleChangeAvailability(e)}
               row
             >
-              <FormControlLabel label="All" control={<Radio />} value={"all"} />
+              <FormControlLabel label="Todos" control={<Radio />} value={"all"} />
               <FormControlLabel
-                label="Available"
+                label="Disponible"
                 control={<Radio />}
                 value={"true"}
               />
               <FormControlLabel
-                label="No Available"
+                label="No Disponible"
                 control={<Radio />}
                 value={"false"}
               />
@@ -56,36 +57,53 @@ const Filter = props => {
           <FormGroup row>
             <TextField
               name="priceFrom"
-              label="Price From"
+              label="Precio Desde"
               type="number"
               value={priceFrom}
-              onChange={(e) => handleChangePrice(e)}
+              onChange={e => handleChangePrice(e)}
             />
             <TextField
               name="priceTo"
-              label="Price To"
+              label="Precio Hasta"
               type="number"
               value={priceTo}
-              onChange={(e) => handleChangePrice(e)}
+              onChange={e => handleChangePrice(e)}
             />
           </FormGroup>
           <FormControl>
             <TextField
               name="quantity"
-              label="Quantity"
+              label="Cantidad"
               type="number"
               value={quantity}
-              onChange={(e) => handleChangePrice(e)}
+              onChange={e => handleChangePrice(e)}
             />
           </FormControl>
+          {item && (
+            <FormControl>
+              <TextField
+                name="itemName"
+                label="Nombre"
+                type="text"
+                value={itemName}
+                onChange={e => handleChangePrice(e)}
+              />
+            </FormControl>
+          )}
         </CardContent>
       </Card>
     </Grid>
   );
 };
 
-const mapStateToProps = ({ filter }) => {
+Filter.propTypes = {
+  pushFilter: PropTypes.func.isRequired,
+  filter: PropTypes.object.isRequired
+};
+
+const mapStateToProps = ({ filter, categories }) => {
   return {
+    item: categories.data,
     filter: filter.data
   };
 };

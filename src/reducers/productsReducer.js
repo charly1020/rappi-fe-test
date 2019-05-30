@@ -8,7 +8,6 @@ const defaulState = {
 
 const reducer = handleActions({
   [getProductsSuccess]: (state, { payload: { products }}) => {
-    // console.log(products); // eslint-disable-line
     return {
       ...state,
       data: products

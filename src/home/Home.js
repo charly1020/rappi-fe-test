@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { getProductList } from "../actions/productsAction";
 import { getCategoriesList } from "../actions/categoriesAction";
 import Filter from "./components/filter/Filter";
@@ -27,6 +28,11 @@ const Home = ({ getProductList, getCategoriesList }) => {
     </Fragment>
   );
 };
+
+Home.propTypes = {
+  getProductList: PropTypes.func.isRequired,
+  getCategoriesList: PropTypes.func.isRequired
+}
 
 const mapDispatchToProps = {
   getProductList,

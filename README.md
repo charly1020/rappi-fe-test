@@ -1,8 +1,9 @@
 # Rappi FE Developmer Challenge
 
 <details><summary>Challenge Requirements</summary>
-  <p>
-*Tiendas “El Baratón” necesita un e-commerce para expandir sus servicios, para eso don Pepe (propietario de la tienda) ha provisto de los siguientes requerimientos:*
+<p>
+
+* Tiendas “El Baratón” necesita un e-commerce para expandir sus servicios, para eso don Pepe (propietario de la tienda) ha provisto de los siguientes requerimientos:*
 * La tienda debe mostrar categorías las cuales están conformadas por subniveles, éstos subniveles a su vez pueden tener más subniveles anidados, se debe hacer un menú donde aparezcan categorías y subniveles de forma anidada. Ejemplo:
   * Categoría licores:
     * subnivel vinos:
@@ -80,7 +81,6 @@ Install dependencies:
 * [ReactJS](https://reactjs.org/) (JavaScript library for building user interface.)
 * [Redux](https://es.redux.js.org/) (JavaScript library for managing application state.)
 * [Material-UI](https://material-ui.com) (React components that implement Google's Material Design.)
-* [Styled Components](https://www.styled-components.com/) (CSS in JS.)
 * [Axios](https://github.com/axios/axios) (Promise based HTTP client for the browser and node.js.)
 * [Redux Actions](https://redux.js.org/basics/actions) (Flux Standard Action utilities for Redux.)
 * [Reselect](https://github.com/reduxjs/reselect) (Simple “selector” library for Redux)

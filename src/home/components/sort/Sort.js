@@ -9,6 +9,7 @@ import {
   Card,
   CardContent
 } from "@material-ui/core";
+import PropTypes from 'prop-types';
 import { pushSort } from "../../../actions/sortActions";
 
 const Sort = props => {
@@ -25,20 +26,20 @@ const Sort = props => {
       <Card>
         <CardContent>
           <FormControl>
-            <FormLabel>Sort By</FormLabel>
+            <FormLabel>Ordenar</FormLabel>
             <RadioGroup value={sortBy} onChange={(e) => handleChangeSort(e)} row>
               <FormControlLabel
-                label="Available"
+                label="Disponible"
                 control={<Radio />}
                 value={"available"}
               />
               <FormControlLabel
-                label="Price"
+                label="Precio"
                 control={<Radio />}
                 value={"price"}
               />
               <FormControlLabel
-                label="Quantity"
+                label="Cantidad"
                 control={<Radio />}
                 value={"quantity"}
               />
@@ -49,6 +50,11 @@ const Sort = props => {
     </Fragment>
   );
 };
+
+Sort.propTypes = {
+  pushSort: PropTypes.func.isRequired,
+  sort: PropTypes.object.isRequired
+}
 
 const mapStateToProps = ({ sort }) => {
   return {

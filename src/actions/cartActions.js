@@ -14,12 +14,6 @@ const {
 
 const addItemToCart = (item) => {
   return dispatch => {
-    // const cart = localStorage.getItem('cart');
-    // if (!cart) {
-    //   localStorage.setItem('cart', JSON.stringify([item]));
-    // } else {
-    //   JSON.parse(cart).push(item);
-    // }
     dispatch(addItemSuccess(item));
   }
 }

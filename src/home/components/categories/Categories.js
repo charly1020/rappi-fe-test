@@ -11,6 +11,7 @@ import {
   AppBar,
   Toolbar
 } from "@material-ui/core";
+import PropTypes from 'prop-types'
 import { ShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import MenuItem from "../menu-item/MenuItem";
@@ -57,7 +58,7 @@ class Categories extends Component {
     const { cart } = this.props;
     return (
       <Link to="/cart" style={{ padding: "10px 20px" }}>
-        <Badge color="secondary" badgeContent={cart.cart.length}>
+        <Badge color="secondary" badgeContent={cart.length}>
           <ShoppingCart style={{ color: "#fff", fontSize: "30" }} />
         </Badge>
       </Link>
@@ -109,10 +110,16 @@ class Categories extends Component {
   }
 }
 
+Categories.propTypes = {
+  categories: PropTypes.array.isRequired,
+  selectSublevel: PropTypes.func.isRequired,
+  cart: PropTypes.array.isRequired
+}
+
 const mapStateToProps = ({ categories, cart }) => {
   return {
     categories: categories.categories,
-    cart
+    cart: cart.cart
   };
 };
 

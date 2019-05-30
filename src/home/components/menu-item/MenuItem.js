@@ -5,10 +5,11 @@ import {
   Collapse,
   MenuList
 } from "@material-ui/core";
+import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { selectSublevel } from "../../../actions/categoriesAction";
 
-class MenuItem extends Component {
+export class MenuItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +61,12 @@ class MenuItem extends Component {
       </div>
     );
   }
+}
+
+MenuItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  handleSelection: PropTypes.func.isRequired,
+  position: PropTypes.string
 }
 
 const mapDispatchToProps = {

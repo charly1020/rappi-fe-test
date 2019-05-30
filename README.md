@@ -1,4 +1,4 @@
-# Rappi FE Developmer Challenge
+# Rappi FE Development Challenge
 
 <details><summary>Challenge Requirements</summary>
 <p>
